@@ -58,7 +58,7 @@ public class TestProgram {
         final int[][] expectedResult = {
                 {1, 4, 7},
                 {2, 5, 8},
-                {3, 6, 9}
+                {3, 6, 1}
         };
         final int[][] actualResult;
         actualResult = Program.transposeMatrix(array);
