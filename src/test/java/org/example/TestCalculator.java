@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class TestCalculator {
     @Test
     void testAddition(){
-        //Arange - создание текстового окружения
+        //Arrange - создание текстового окружения
         final double NUMBER1 = 2;
         final double NUMBER2 = 3;
         double expectedResult = 5;

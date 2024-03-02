@@ -1,12 +1,18 @@
 package org.example;
 
+import java.io.IOException;
+
 public class NonlinearEquations {
 
     public static double f(double x) {
         return x*x - 2; // Пример уравнения f(x) = x^2 - 2
     }
 
-    public static double bisection(double a, double b, double ep) {
+    public static double bisection(double a, double b, double ep) throws IOException {
+        if (a <= b){
+            throw new IOException("Неверный интервал");
+        }
+
         while ((b - a) / 2 > ep) {
             double mid = (a + b) / 2;
             if (f(mid) == 0) {
@@ -53,7 +59,7 @@ public class NonlinearEquations {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         double ep = 1e-5; // Точность решения
         double a = 0, b = 2; // Интервал для метода бисекции
         double x0 = 0.25; // Начальное приближение для метода Ньютона и простых итераций
