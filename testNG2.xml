@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Suite2" verbose="1">
+    <test name="Solution">
+        <groups>
+            <run>
+                <include name="solution"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="org.example.TestGauss"/>
+        </classes>
+    </test>
+</suite>
