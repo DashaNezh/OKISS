@@ -2,11 +2,9 @@ package org.example;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import java.io.IOException;
-
 public class TestGauss {
-    @Test
-    void testGauss() throws IOException {
+    @Test (groups = "positive")
+    void testGauss() throws Exception {
         // Arrange - создание текстового окружения
         final double[][] A = {
                 {0, 2, 3},
@@ -25,8 +23,8 @@ public class TestGauss {
             softAssert.assertEquals(actualResult[i], expectedResult[i], DELTA, "Element at index " + i + " is not as expected");
         }
     }
-    @Test  (expectedExceptions= {IOException.class}, expectedExceptionsMessageRegExp = "Система несовместна")
-    void testGaussNonSingularMatrix() throws IOException{
+    @Test  (expectedExceptions= {Gauss.IncompatibleSystemException.class}, expectedExceptionsMessageRegExp = "Система несовместна", groups = "solution")
+    void testGaussNonSingularMatrix() throws Exception {
         // Arrange - создание текстового окружения
         final double[][] A = {
                 {1, 2, 3},
@@ -37,8 +35,8 @@ public class TestGauss {
         // Act - действия (исполнение)
         Gauss.gauss(A, B);
     }
-    @Test  (expectedExceptions= IOException.class, expectedExceptionsMessageRegExp = "Размерность вектора B не совпадает с размерностью матрицы A")
-    void testGaussIncompatibleMatrices() throws IOException{
+    @Test  (expectedExceptions= {Gauss.DimensionOfMatrices.class}, expectedExceptionsMessageRegExp = "Размерность вектора B не совпадает с размерностью матрицы A", groups = "solution")
+    void testGaussIncompatibleMatrices() throws Exception {
         // Arrange - создание текстового окружения
         final double[][] A = {
                 {1, 2, 3},
@@ -49,8 +47,8 @@ public class TestGauss {
         // Act - действия (исполнение)
         Gauss.gauss(A, B);
     }
-    @Test  (expectedExceptions= IOException.class, expectedExceptionsMessageRegExp = "Система имеет множество решений")
-    void testGaussManySolutions() throws IOException{
+    @Test  (expectedExceptions= {Gauss.ManySolutions.class}, expectedExceptionsMessageRegExp = "Система имеет множество решений", groups = "solution")
+    void testGaussManySolutions() throws Exception {
         // Arrange - создание текстового окружения
         final double[][] A = {
                 {1, 2, 3},

@@ -1,30 +1,27 @@
 package org.example;
-
-import java.io.IOException;
 import java.util.Arrays;
 
 public class Gauss {
 
-    public static void main(String[] args) throws IOException {
-        double[][] A = {
-                {0, 2, 3},
-                {4, 5, 6},
-                {7, 0, 9}
-        };
-        double[] B = {1, 2, 3};
+    public static void main(String[] args) throws Exception{
+            double[][] A = {
+                    {0, 2, 3},
+                    {4, 5, 6},
+                    {7, 0, 9}
+            };
+            double[] B = {1, 2, 3};
 
-        double[] result = gauss(A, B);
+            double[] result = gauss(A, B);
 
-        System.out.println("Решение: " + Arrays.toString(result));
-
+            System.out.println("Решение: " + Arrays.toString(result));
 
     }
 
-    public static double[] gauss(double[][] A, double[] B) throws IOException {
+    public static double[] gauss(double[][] A, double[] B) throws Exception {
         int n = A.length;
         // Проверка на совместимость размерности матрицы A и вектора B
         if (n != B.length){
-            throw new IOException("Размерность вектора B не совпадает с размерностью матрицы A");
+            throw new DimensionOfMatrices("Размерность вектора B не совпадает с размерностью матрицы A");
         }
         for (int i = 0; i < n; i++) {
             double maxEl = Math.abs(A[i][i]);
@@ -47,9 +44,9 @@ public class Gauss {
 
             if (Math.abs(A[i][i]) < 1e-9) {
                 if (Math.abs(B[i]) < 1e-9) {
-                    throw new IOException("Система имеет множество решений");
+                    throw new ManySolutions("Система имеет множество решений");
                 }
-                throw new IOException("Система несовместна");
+                throw new IncompatibleSystemException("Система несовместна");
             }
 
             for (int k = i + 1; k < n; k++) {
@@ -73,5 +70,21 @@ public class Gauss {
             }
         }
         return x;
+    }
+
+    public static class IncompatibleSystemException extends Exception {
+        public IncompatibleSystemException(String message){
+            super(message);
+        }
+    }
+    public static class ManySolutions extends Exception{
+        public ManySolutions(String message){
+            super(message);
+        }
+    }
+    public static class DimensionOfMatrices extends Exception{
+        public DimensionOfMatrices(String message){
+            super(message);
+        }
     }
 }

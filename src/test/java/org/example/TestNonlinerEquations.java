@@ -3,51 +3,53 @@ package org.example;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 
 public class TestNonlinerEquations {
-    @Test (expectedExceptions = {IOException.class}, expectedExceptionsMessageRegExp = "Pass Message test")
-    public void TestSimpleIteration() throws Exception{
-        final double ep = 1e-5;
-        final double x0 = 0.25;
-        final double expectedResult = 1.414;
-        final double actualResult;
-        final double Delta = 1e-3;
-        actualResult = NonlinearEquations.simpleIteration(x0, ep);
-        Assert.assertEquals(actualResult, expectedResult, Delta);
-        throw new IOException("Pass Message test");
+    @Test (groups = "positive")
+    public void testSimpleIteration(){
+        // Arrange - создание текстового окружения
+        final double EP = 1e-5;
+        final double X0 = 0.25;
+        double expectedResult = 1.414;
+        double actualResult;
+        final double DELTA = 1e-3;
+        // Act - действия (исполнение)
+        actualResult = NonlinearEquations.simpleIteration(X0, EP);
+        // Assert - сравнение фактического и ожидаемого результатов с использованием дельты
+        Assert.assertEquals(actualResult, expectedResult, DELTA);
     }
-    @Test (expectedExceptions= {IOException.class}, expectedExceptionsMessageRegExp = ".* Message .*")
-    public void TestNewton() throws Exception{
-        final double ep = 1e-5;
-        final double x0 = 0.25;
-        final double expectedResult = 1.414;
-        final double actualResult;
-        final double Delta = 1e-3;
-        actualResult = NonlinearEquations.newton(x0, ep);
-        Assert.assertEquals(actualResult, expectedResult, Delta);
-        throw new IOException("Pass Message test");
+    @Test (groups = "positive")
+    public void testNewton(){
+        // Arrange - создание текстового окружения
+        final double EP = 1e-5;
+        final double X0 = 0.25;
+        double expectedResult = 1.414;
+        double actualResult;
+        final double DELTA = 1e-3;
+        // Act - действия (исполнение)
+        actualResult = NonlinearEquations.newton(X0, EP);
+        // Assert - сравнение фактического и ожидаемого результатов с использованием дельты
+        Assert.assertEquals(actualResult, expectedResult, DELTA);
     }
-    @Test
-    public void testBisectionPositive() throws IOException {
-        final double ep = 1e-5;
-        final double a = 0, b = 2;
-        final double expectedResult = 1.414;
-        final double actualResult;
-        final double Delta = 1e-3;
-
-        actualResult = NonlinearEquations.bisection(a, b, ep);
-
-        Assert.assertEquals(actualResult, expectedResult, Delta);
+    @Test (groups = "positive")
+    public void testBisectionPositive() throws Exception {
+        // Arrange - создание текстового окружения
+        final double EP = 1e-5;
+        final double A = 0, B = 2;
+        double expectedResult = 1.414;
+        double actualResult;
+        final double DELTA = 1e-3;
+        // Act - действия (исполнение)
+        actualResult = NonlinearEquations.bisection(A, B, EP);
+        // Assert - сравнение фактического и ожидаемого результатов с использованием дельты
+        Assert.assertEquals(actualResult, expectedResult, DELTA);
     }
-    @Test (expectedExceptions= {IOException.class}, expectedExceptionsMessageRegExp = "Неверный интервал")
-    public void testBisection() throws IOException{
-        final double ep = 1e-5;
-        final double a = 0, b = -2;
-        final double actualResult;
-
-        actualResult = NonlinearEquations.bisection(a, b, ep);
-
+    @Test (expectedExceptions= {NonlinearEquations.InvalidInterval.class}, expectedExceptionsMessageRegExp = "Неверный интервал", groups = "negative")
+    public void testBisectionNegative() throws Exception{
+        // Arrange - создание текстового окружения
+        final double EP = 1e-5;
+        final double A = 0, B = -2;
+        // Act - действия (исполнение)
+        NonlinearEquations.bisection(A, B, EP);
     }
 }

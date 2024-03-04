@@ -1,5 +1,6 @@
 package org.example;
 
+import javax.imageio.ImageTranscoder;
 import java.io.IOException;
 
 public class NonlinearEquations {
@@ -8,9 +9,9 @@ public class NonlinearEquations {
         return x*x - 2; // Пример уравнения f(x) = x^2 - 2
     }
 
-    public static double bisection(double a, double b, double ep) throws IOException {
-        if (a <= b){
-            throw new IOException("Неверный интервал");
+    public static double bisection(double a, double b, double ep) throws Exception {
+        if (a >= b){
+            throw new InvalidInterval("Неверный интервал");
         }
 
         while ((b - a) / 2 > ep) {
@@ -30,10 +31,10 @@ public class NonlinearEquations {
         return (2 + x*x) / (2 * x); // Преобразование к виду x = f(x)
     }
 
-    public static double simpleIteration(double x0, double ep) {
+    public static double simpleIteration(double x0, double ep){
         double x_prev = x0;
         int cnt = 0;
-        while (cnt < 100) {
+        while (cnt < 200) {
             double x_next = f1(x_prev);
             if (Math.abs(x_next - x_prev) < ep) {
                 return x_next;
@@ -59,7 +60,7 @@ public class NonlinearEquations {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         double ep = 1e-5; // Точность решения
         double a = 0, b = 2; // Интервал для метода бисекции
         double x0 = 0.25; // Начальное приближение для метода Ньютона и простых итераций
@@ -75,5 +76,10 @@ public class NonlinearEquations {
         // Метод бисекции
         double rootBisection = bisection(a, b, ep);
         System.out.println("Метод бисекции: " + rootBisection);
+    }
+    public static class InvalidInterval extends Exception{
+        public InvalidInterval(String message){
+            super(message);
+        }
     }
 }

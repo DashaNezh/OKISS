@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Suite3" verbose="1">
+    <test name="Positive">
+        <groups>
+            <run>
+                <include name="positive"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="org.example.TestGauss"/>
+            <class name="org.example.TestNonlinerEquations"/>
+        </classes>
+    </test>
+</suite>
