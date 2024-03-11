@@ -1,8 +1,5 @@
 package org.example;
 
-import javax.imageio.ImageTranscoder;
-import java.io.IOException;
-
 public class NonlinearEquations {
 
     public static double f(double x) {
@@ -12,6 +9,9 @@ public class NonlinearEquations {
     public static double bisection(double a, double b, double ep) throws Exception {
         if (a >= b){
             throw new InvalidInterval("Неверный интервал");
+        }
+        if (ep < 0){
+            throw new IncorrectError("Неверная погрешность");
         }
 
         while ((b - a) / 2 > ep) {
@@ -28,10 +28,13 @@ public class NonlinearEquations {
     }
 
     public static double f1(double x) {
-        return (2 + x*x) / (2 * x); // Преобразование к виду x = f(x)
+        return (2+x*x)/(2*x); // Преобразование к виду x = f(x)
     }
 
-    public static double simpleIteration(double x0, double ep){
+    public static double simpleIteration(double x0, double ep) throws Exception{
+        if (ep < 0){
+            throw new IncorrectError("Неверная погрешность");
+        }
         double x_prev = x0;
         int cnt = 0;
         while (cnt < 200) {
@@ -49,7 +52,10 @@ public class NonlinearEquations {
         return 2 * x; // Производная для метода Ньютона
     }
 
-    public static double newton(double x0, double ep) {
+    public static double newton(double x0, double ep) throws Exception{
+        if (ep < 0){
+            throw new IncorrectError("Неверная погрешность");
+        }
         double x = x0;
         while (true) {
             double x_next = x - f(x) / df(x);
@@ -79,6 +85,11 @@ public class NonlinearEquations {
     }
     public static class InvalidInterval extends Exception{
         public InvalidInterval(String message){
+            super(message);
+        }
+    }
+    public static class IncorrectError extends  Exception{
+        public IncorrectError(String message){
             super(message);
         }
     }
