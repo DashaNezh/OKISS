@@ -35,17 +35,17 @@ public class NonlinearEquations {
         if (ep < 0){
             throw new IncorrectError("Неверная погрешность");
         }
-        double x_prev = x0;
-        int cnt = 0;
-        while (cnt < 200) {
-            double x_next = f1(x_prev);
-            if (Math.abs(x_next - x_prev) < ep) {
-                return x_next;
+        double xPrev = x0;
+        int count = 0;
+        while (count < 200) {
+            double xNext = f1(xPrev);
+            if (Math.abs(xNext - xPrev) < ep) {
+                return xNext;
             }
-            x_prev = x_next;
-            cnt++;
+            xPrev = xNext;
+            count++;
         }
-        return x_prev;
+        return xPrev;
     }
 
     public static double df(double x) {
@@ -58,11 +58,11 @@ public class NonlinearEquations {
         }
         double x = x0;
         while (true) {
-            double x_next = x - f(x) / df(x);
-            if (Math.abs(x_next - x) < ep) {
-                return x_next;
+            double xNext = x - f(x) / df(x);
+            if (Math.abs(xNext - x) < ep) {
+                return xNext;
             }
-            x = x_next;
+            x = xNext;
         }
     }
 

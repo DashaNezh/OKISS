@@ -23,7 +23,6 @@ public class TestNonlinerEquations {
         // Arrange - создание текстового окружения
         final double EP = -1e-5;
         final double X0 = 0.25;
-        double expectedResult = 1.414;
         // Act - действия (исполнение)
         NonlinearEquations.simpleIteration(X0, EP);
     }
@@ -45,7 +44,6 @@ public class TestNonlinerEquations {
         // Arrange - создание текстового окружения
         final double EP = -1e-5;
         final double X0 = 0.25;
-        double expectedResult = 1.414;
         // Act - действия (исполнение)
         NonlinearEquations.newton(X0, EP);
     }
