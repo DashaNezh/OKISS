@@ -15,17 +15,17 @@ import static org.example.Constants.Urls.*;
 
 
 public class TestPstu {
-    private WebDriver driver;
-    private String username = "nezhdanovad10";
-    private String password = "tiMeisup2023@";
+    protected WebDriver driver;
+    private final String username = "nezhdanovad10";
+    private final String password = "tiMeisup2023@";
 
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void openMainPage () {
         driver = new ChromeDriver();
         driver.get(HOMEPAGE);
     }
 
-    @AfterMethod
+    @AfterMethod (alwaysRun = true)
     public void closeBrowser() {
         if (driver != null) {
             driver.quit();
