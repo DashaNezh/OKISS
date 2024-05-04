@@ -36,13 +36,13 @@ public class Scripts {
             System.out.println(tocLink.getAttribute("textContent"));
         }
         // через css селекторы
-        // WebElement firstTocLink = tocLinks.get(6);
-        // firstTocLink.click();
+//         WebElement firstTocLink = tocLinks.get(6);
+//         firstTocLink.click();
         // через xpath
         WebElement firstTocLink = driver.findElement(By.xpath("//div[@id='toc']//ul//li[3]//a"));
         firstTocLink.click();
 
-        driver.quit(); // Закрываем браузер
+        //driver.quit(); // Закрываем браузер
     }
     @Test
     public void testNGEdge() {
@@ -67,8 +67,8 @@ public class Scripts {
             System.out.println(tocLink.getAttribute("textContent"));
         }
         // через css селекторы
-        // WebElement firstTocLink = tocLinks.get(6);
-        // firstTocLink.click();
+//         WebElement firstTocLink = tocLinks.get(6);
+//         firstTocLink.click();
         // через xpath
         WebElement firstTocLink = driver.findElement(By.xpath("//div[@id='toc']//ul//li[3]//a"));
         firstTocLink.click();
@@ -99,8 +99,8 @@ public class Scripts {
         }
 
         // через css селекторы
-        // WebElement firctClink = mainmenus.get(6);
-        //firctClink.click();
+//        WebElement firctClink = mainmenus.get(6);
+//        firctClink.click();
 
         // через xpath
         WebElement firctClink = driver.findElement(By.xpath("//div[@class='menu-top']//a[3]"));
@@ -132,8 +132,8 @@ public class Scripts {
         }
 
         // через css селекторы
-        // WebElement firctClink = mainmenus.get(6);
-        //firctClink.click();
+//        WebElement firctClink = mainmenus.get(6);
+//        firctClink.click();
 
         // через xpath
         WebElement firctClink = driver.findElement(By.xpath("//div[@class='menu-top']//a[3]"));
@@ -165,8 +165,8 @@ public class Scripts {
         }
 
         // через css селекторы
-        //WebElement firctClink = mainmenus.get(4);
-        //firctClink.click();
+//        WebElement firctClink = mainmenus.get(4);
+//        firctClink.click();
 
         // через xpath
         WebElement firstTocLink = driver.findElement(By.xpath("//div[@class='target_groups']//ul//li[3]//a"));
@@ -198,12 +198,12 @@ public class Scripts {
         }
 
         // через css селекторы
-        //WebElement firctClink = mainmenus.get(4);
-        //firctClink.click();
+//        WebElement firctClink = mainmenus.get(4);
+//        firctClink.click();
 
         // через xpath
-        WebElement firstTocLink = driver.findElement(By.xpath("//div[@class='target_groups']//ul//li[3]//a"));
-        firstTocLink.click();
+        WebElement firctLink = driver.findElement(By.xpath("//div[@class='target_groups']//ul//li[3]//a"));
+        firctLink.click();
 
         driver.quit(); // Закрываем браузер
     }

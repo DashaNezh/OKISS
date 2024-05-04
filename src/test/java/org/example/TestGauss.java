@@ -1,7 +1,6 @@
 package org.example;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 public class TestGauss {
     @Test (groups = "positive")
